@@ -1,0 +1,9 @@
+{
+    "filters": [
+        {
+            "runWith": "nim",
+            "script": "./strip.nim",
+            "name": "strip"
+        }
+    ]
+}
