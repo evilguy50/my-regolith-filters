@@ -4,13 +4,13 @@ var config = readFile("./data/title_ui/config.json").parseJson()
 var prefix = config["prefix"].to(string)
 var ui = readFile("./data/title_ui/hud_screen.json").replace("$prefix-", prefix).parseJson()
 
-proc newImage(u: JsonNode, prefix, name: string, width, height, layer: int, offset: array[2, int]): JsonNode=
+proc newImage(u: JsonNode, prefix, name, path: string, width, height, layer: int, offset: array[2, int]): JsonNode=
     var newU = u
     # image
     if not newU.hasKey(name & "_image"):
         newU.add(name & "_image", %*{})
         newU[name & "_image"].add("type", newJString("image"))
-        newU[name & "_image"].add("texture", newJString("textures/ui/" & name))
+        newU[name & "_image"].add("texture", newJString(path & "/" & name))
         newU[name & "_image"].add("size", %*[width, height])
         newU[name & "_image"].add("offset", %*offset)
         newU[name & "_image"].add("layer", newJInt(layer))
@@ -34,7 +34,10 @@ proc newImage(u: JsonNode, prefix, name: string, width, height, layer: int, offs
 var layer = 0
 for im in config["images"]:
     layer.inc(1)
-    ui = ui.newImage(prefix, im["name"].to(string), im["width"].to(int), im["height"].to(int), layer, im["offset"].to(array[2, int]))
+    var path = "textures/ui"
+    if im.hasKey("path"):
+        path = im["path"].to(string)
+    ui = ui.newImage(prefix, im["name"].to(string), path, im["width"].to(int), im["height"].to(int), layer, im["offset"].to(array[2, int]))
 
 if not dirExists("./RP/ui"):
     createDir("./RP/ui")

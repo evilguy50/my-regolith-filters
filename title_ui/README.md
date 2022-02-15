@@ -15,10 +15,13 @@ adding a new image:
     {
         "name": "example",
         "width": 64,
-        "height": 64
+        "height": 64,
+        "offset": [0, 0]
     }
 
     the image in-game will be sourced from textures/ui/{your image name}
+    if you want to change the texture path add a path key to the image object.
+    don't put a trailing /
 
 running the title command:
 
