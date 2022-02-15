@@ -1,8 +1,8 @@
 {
     "filters": [
         {
-            "name": "ds_store",
-            "script": "./ds_store.nim",
+            "name": "title_ui",
+            "script": "./title_ui.nim",
             "runWith": "nim"
         }
     ]
