@@ -1,0 +1,18 @@
+{
+    "hud_title_text/title_frame/title": {
+        "modifications": [
+            {
+                "array_name": "bindings",
+                "operation": "insert_back",
+                "value": {
+                    "binding_type": "view",
+                    "source_property_name": "(not (#text > '$prefix-'))",
+                    "target_property_name": "#visible"
+                }
+            }
+        ]
+    },
+    "root_panel": {
+        "modifications": []
+    }
+}

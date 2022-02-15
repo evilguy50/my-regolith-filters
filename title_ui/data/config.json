@@ -1,0 +1,10 @@
+{
+    "prefix": "ui_",
+    "images": [
+        {
+            "name": "example",
+            "width": 64,
+            "height": 64
+        }
+    ]
+}

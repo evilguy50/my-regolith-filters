@@ -1,0 +1,9 @@
+{
+    "filters": [
+        {
+            "name": "ds_store",
+            "script": "./ds_store.nim",
+            "runWith": "nim"
+        }
+    ]
+}
