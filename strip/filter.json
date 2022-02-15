@@ -2,8 +2,8 @@
     "filters": [
         {
             "runWith": "nim",
-            "script": "./strip.nim",
-            "name": "strip"
+            "script": "./title_ui.nim",
+            "name": "title_ui"
         }
     ]
 }
