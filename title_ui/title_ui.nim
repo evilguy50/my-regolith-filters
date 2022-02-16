@@ -2,10 +2,12 @@ import os, json, strutils, strformat
 
 var config = readFile("./data/title_ui/config.json").parseJson()
 var prefix = config["prefix"].to(string)
-var ui = readFile("./data/title_ui/hud_screen.json").replace("$prefix-", prefix).parseJson()
+var ui = readFile("./data/title_ui/hud_screen.json").replace("$prefix", prefix).parseJson()
 
-proc newImage(u: JsonNode, prefix, name, path: string, width, height, layer: int, offset: array[2, int]): JsonNode=
+proc newImage(u: JsonNode, prefix, name, notStr, path: string, width, height, layer: int, offset: array[2, int]): (JsonNode, string)=
     var newU = u
+    var newNot = notStr[0 .. notStr.len() - 3] & fmt" or #text = '{prefix}{name}'))"
+    newU["hud_title_text/title_frame/title"]["modifications"][0]["value"]["source_property_name"] = %*newNot
     # image
     if not newU.hasKey(name & "_image"):
         newU.add(name & "_image", %*{})
@@ -29,7 +31,7 @@ proc newImage(u: JsonNode, prefix, name, path: string, width, height, layer: int
         # add root mod
         var newMod = %*{"array_name": "controls", "operation": "insert_front","value": {fmt"{name}_image_factory@hud.{name}_image_factory": {}}}
         newU["root_panel"]["modifications"].add(newMod)
-    return newU
+    return (newU, newNot)
 
 var layer = 0
 for im in config["images"]:
@@ -37,7 +39,10 @@ for im in config["images"]:
     var path = "textures/ui"
     if im.hasKey("path"):
         path = im["path"].to(string)
-    ui = ui.newImage(prefix, im["name"].to(string), path, im["width"].to(int), im["height"].to(int), layer, im["offset"].to(array[2, int]))
+    var notMod = ui["hud_title_text/title_frame/title"]["modifications"]
+    var notOb = notMod[0]
+    var notStr = notOb["value"]["source_property_name"].to(string)
+    (ui, notStr) = newImage(ui, prefix, im["name"].to(string), notStr, path, im["width"].to(int), im["height"].to(int), layer, im["offset"].to(array[2, int]))
 
 if not dirExists("./RP/ui"):
     createDir("./RP/ui")
