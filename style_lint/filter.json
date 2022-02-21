@@ -1,0 +1,9 @@
+{
+    "filters": [
+        {
+            "name": "style_lint",
+            "script": "./style_lint.py",
+            "runWith": "python"
+        }
+    ]
+}
