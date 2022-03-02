@@ -3,7 +3,8 @@
         {
             "name": "title_ui",
             "script": "./title_ui.nim",
-            "runWith": "nim"
+            "runWith": "nim",
+            "version": "1.0.0"
         }
     ]
 }

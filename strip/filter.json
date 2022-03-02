@@ -3,7 +3,8 @@
         {
             "runWith": "nim",
             "script": "./strip.nim",
-            "name": "strip"
+            "name": "strip",
+            "version": "1.0.0"
         }
     ]
 }
