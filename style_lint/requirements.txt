@@ -1,1 +1,2 @@
 jsoncparser==1.0.3
+ujson==5.1.0
