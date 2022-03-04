@@ -3,8 +3,7 @@
         {
             "runWith": "python",
             "script": "./shorthand.py",
-            "name": "shorthand",
-            "version": "1.0.0"
+            "name": "shorthand"
         }
     ]
 }

@@ -3,8 +3,7 @@
         {
             "name": "ds_store",
             "script": "./ds_store.nim",
-            "runWith": "nim",
-            "version": "1.0.0"
+            "runWith": "nim"
         }
     ]
 }

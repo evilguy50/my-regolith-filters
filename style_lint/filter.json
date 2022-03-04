@@ -3,8 +3,7 @@
         {
             "name": "style_lint",
             "script": "./style_lint.py",
-            "runWith": "python",
-            "version": "1.0.0"
+            "runWith": "python"
         }
     ]
 }
