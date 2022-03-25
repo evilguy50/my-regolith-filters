@@ -8,10 +8,10 @@ import funcLint
 import string
 
 config = configparser.ConfigParser()
-config.read('./data/lint/config.ini')
+config.read('./data/style_lint/config.ini')
 
 def configBool(cat: string, opt: string):
-    if "true" in config[cat][opt].lower():
+    if config[cat][opt].__str__().lower().__contains__("true"):
         return True
     else:
         return False
