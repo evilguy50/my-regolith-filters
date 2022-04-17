@@ -1,0 +1,9 @@
+{
+    "filters": [
+        {
+            "name": "classes",
+            "script": "./classes.nim",
+            "runWith": "nim"
+        }
+    ]
+}
