@@ -1,4 +1,5 @@
 {
+    "description": "filter for adding OOP class like structure to functions",
     "filters": [
         {
             "name": "classes",
