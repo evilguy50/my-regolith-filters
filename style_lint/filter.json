@@ -1,4 +1,5 @@
 {
+    "description": "filter for automatic project styling",
     "filters": [
         {
             "name": "style_lint",
