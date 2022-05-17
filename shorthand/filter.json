@@ -1,4 +1,5 @@
 {
+    "description": "filter for having shorthand syntax inside of functions",
     "filters": [
         {
             "runWith": "python",
