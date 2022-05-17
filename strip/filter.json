@@ -1,4 +1,5 @@
 {
+    "description": "filter for striping comments from json, mcfunction, and lang files",
     "filters": [
         {
             "runWith": "nim",
