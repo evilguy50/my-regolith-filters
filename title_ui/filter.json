@@ -1,4 +1,5 @@
 {
+    "description": "filter for generating title ui bindings",
     "filters": [
         {
             "name": "title_ui",
