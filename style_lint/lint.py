@@ -22,7 +22,20 @@ if configBool("Files","dotNaming"):
         pathCount += 1
         dot.reName(p, dot.dotList[pathCount])
 
-for f in Path(".").rglob('*.json'):
+for f in Path("./BP/").rglob('*.json'):
+    if configBool("Json","format"):
+        if configBool("Json","removeComments"):
+            jsonLint.format(f.__str__(), False)
+        else:
+            jsonLint.format(f.__str__(), True)
+    if configBool("Json","removeComments"):
+        if not configBool("Json","format"):
+            jsonLint.remove(f)
+        if configBool("Json","minify"):
+            jsonLint.minify(f)
+        if configBool("Json","obfuscate"):
+            jsonLint.unicode(f)
+for f in Path("./RP/").rglob('*.json'):
     if configBool("Json","format"):
         if configBool("Json","removeComments"):
             jsonLint.format(f.__str__(), False)

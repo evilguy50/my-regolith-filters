@@ -1,0 +1,10 @@
+{
+    "description": "filter for converting old execute commands to the 1.19.10 format",
+    "filters": [
+        {
+            "runWith": "nodejs",
+            "script": "./build/index.js",
+            "name": "new_exec"
+        }
+    ]
+}
