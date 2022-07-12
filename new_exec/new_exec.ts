@@ -55,7 +55,9 @@ for (const filePath of walkSync("./BP/functions")) {
                     detect = true
                 }
             }
-            console.log(detect)
+            if (detect) {
+                console.log(`command already new execute: skipping`)
+            }
             if (detect == false) {
                 var selector = args[1]
                 var pos = getElemInRange(args, " ", 2, 4)

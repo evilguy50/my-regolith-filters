@@ -19,8 +19,8 @@
   },
   "scripts": {
     "prepare": "tsc",
-    "build": "tsc",
-    "start": "ts-node src/index.ts"
+    "build": "tsc new_exec.ts",
+    "start": "ts-node new_exec.ts"
   },
   "keywords": [],
   "author": "",
