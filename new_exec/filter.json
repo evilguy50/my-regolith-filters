@@ -3,7 +3,7 @@
     "filters": [
         {
             "runWith": "nodejs",
-            "script": "./build/index.js",
+            "script": "./new_exec.js",
             "name": "new_exec"
         }
     ]
