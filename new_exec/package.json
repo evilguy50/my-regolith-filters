@@ -7,7 +7,7 @@
     "glob": "^8.0.3"
   },
   "name": "new_exec",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "main": "index.js",
   "devDependencies": {
     "@types/node": "^16.11.36",
@@ -18,12 +18,12 @@
     "typescript": "^4.7.2"
   },
   "scripts": {
-    "prepare": "tsc",
+    "prepare": "tsc new_exec.ts",
     "build": "tsc new_exec.ts",
     "start": "ts-node new_exec.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "evil#8098",
   "license": "ISC",
   "description": "",
   "husky": {
