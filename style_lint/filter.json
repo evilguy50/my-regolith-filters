@@ -1,8 +1,9 @@
 {
+    "description": "filter for automatic project styling",
     "filters": [
         {
             "name": "style_lint",
-            "script": "./style_lint.py",
+            "script": "./lint.py",
             "runWith": "python"
         }
     ]

@@ -1,4 +1,5 @@
 {
+    "description": "filter for removing .DS_Store files",
     "filters": [
         {
             "name": "ds_store",

@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "experimentalDecorators": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "noUnusedParameters": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "outDir": ".",
+    "target": "es2016",
+    "lib": ["es2016"],
+    "baseUrl": "."
+  },
+  "include": [
+    "**/*"
+  ],
+  "exclude": [
+  ]
+}
