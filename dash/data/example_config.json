@@ -1,0 +1,37 @@
+{
+    "name": "example",
+    "author": "evil",
+    "targetVersion": "1.19.30",
+    "packs": {
+        "behaviorPack": "./BP",
+        "resourcePack": "./RP"
+    },
+    "experimentalGameplay": {
+        "holidayCreatorFeatures": false,
+        "creationOfCustomBiomes": false,
+        "upcomingCreatorFeatures": false,
+        "enableGameTestFramework": false,
+        "experimentalMolangFeatures": false,
+        "educationEdition": false
+    },
+    "bdsProject": false,
+    "compiler": {
+        "plugins": [
+            "generatorScripts",
+            "typeScript",
+            "entityIdentifierAlias",
+            "customEntityComponents",
+            "customItemComponents",
+            "customBlockComponents",
+            "customCommands",
+            "moLang",
+            "formatVersionCorrection",
+            [
+                "simpleRewrite",
+                {
+                    "packName": "example"
+                }
+            ]
+        ]
+    }
+}
