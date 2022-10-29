@@ -2,11 +2,12 @@
   "dependencies": {
     "@types/glob": "^7.2.0",
     "bc-minecraft-bedrock-command": "1.2.29",
+    "@types/json5": "^2.2.0",
     "create-typescript-project": "^0.8.0",
     "glob": "^8.0.3"
   },
   "name": "new_exec",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "index.js",
   "devDependencies": {
     "@types/node": "^16.11.36",
