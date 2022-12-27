@@ -20,6 +20,7 @@ if not dirExists("./data/dash/dash_compiler"):
     moveDir(fmt"./data/dash/tmp/deno-dash-compiler-{dashVersion}", "./data/dash/dash_compiler")
     removeDir("./data/dash/tmp")
     removeFile("./data/dash/dash.zip")
+    removeFile("./data/dash/tmp.txt")
     setCurrentDir("./data/dash/dash_compiler")
     discard execShellCmd("deno task install:full")
 
