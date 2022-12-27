@@ -1,52 +1,39 @@
-import os, json, strutils
+import os, json, strformat
+import puppy
+import zippy/ziparchives
+
+
+const dashVersion = "0.4.4"
+let rootDir = getEnv("ROOT_DIR")
+let filterDir = getCurrentDir()
+let config = parseFile(fmt"{rootDir}/config.json")
+
+if not config.hasKey("compiler"):
+    quit("config file missing field 'compiler' needed for dash to run")
 
 if not dirExists("./data/dash"):
     createDir("./data/dash")
 
-if not fileExists("./data/dash/config.json"):
-    quit("Must put a dash config at data/dash/config.json")
+if not dirExists("./data/dash/dash_compiler"):
+    writeFile("./data/dash/dash.zip", fetch(fmt"https://github.com/bridge-core/deno-dash-compiler/archive/refs/tags/v{dashVersion}.zip"))
+    extractAll("./data/dash/dash.zip", "./data/dash/tmp")
+    moveDir(fmt"./data/dash/tmp/deno-dash-compiler-{dashVersion}", "./data/dash/dash_compiler")
+    removeDir("./data/dash/tmp")
+    removeFile("./data/dash/dash.zip")
+    setCurrentDir("./data/dash/dash_compiler")
+    discard execShellCmd("deno task install:full")
 
-if not dirExists("./data/dash/deno_dash"):
-    discard execShellCmd("git clone https://github.com/bridge-core/deno-dash-compiler.git ./data/dash/deno_dash")
-    var root = getCurrentDir()
-    setCurrentDir("./data/dash/deno_dash")
-    discard execShellCmd("deno task install")
-    setCurrentDir(root)
+echo filterDir
+setCurrentDir(filterDir)
+copyFile(fmt"{rootDir}/config.json", "./config.json")
+sleep(1000)
 
-copyFile("./data/dash/config.json", "./config.json")
+discard execShellCmd("dash_compiler build")
 
-if dirExists("./data/dash/bridge"):
-    echo "copying .bridge"
-    copyDir("./data/dash/bridge", "./.bridge")
-    if dirExists("./data/dash/bridge/extensions"):
-        for e in walkDirRec("./data/dash/bridge/extensions"):
-            if e.contains("manifest.json"):
-                let parent = e.parentDir()
-                let manifest = e.readFile().parseJson()
-                echo "found extension: " & parent.splitPath()[1]
-                if manifest.hasKey("contributeFiles"):
-                    for k in manifest["contributeFiles"].keys:
-                        echo "resource: " & k
-                        let kPath = replace(parent & "/" & k, "\\", "/")
-                        var packType: string
-                        if manifest["contributeFiles"][k]["pack"].to(string).contains("behaviorPack"):
-                            packType = "./BP/"
-                        elif manifest["contributeFiles"][k]["pack"].to(string).contains("resourcePack"):
-                            packType = "./RP/"
-                        if kPath.fileExists():
-                            kPath.copyFile(packType & manifest["contributeFiles"][k]["path"].to(string))
-                        elif kPath.dirExists():
-                            kPath.copyDir(packType & manifest["contributeFiles"][k]["path"].to(string))
-
-if dirExists("./data/dash/build"):
-    removeDir("./data/dash/build")
-
-createDir("./data/dash/build")
-
-discard execShellCmd("dash_compiler build --out ./data/dash/build")
-let config = readFile("./data/dash/config.json").parseJson()
-
-removeDir("./BP")
-moveDir("./data/dash/build/builds/dist/" & config["name"].to(string) & " BP", "./BP")
-removeDir("./RP")
-moveDir("./data/dash/build/builds/dist/" & config["name"].to(string) & " RP", "./RP")
+let configName: string = config["name"].to(string)
+for pack in @["BP", "RP"]:
+    removeDir(fmt"./{pack}")
+    sleep(1000)
+    for d in walkDirRec("./builds/dist"):
+        echo fmt"buildPath: {d}"
+    moveDir(fmt"./builds/dist/{configName} {pack}", fmt"./{pack}")

@@ -1,4 +1,6 @@
 {
+    "description": "filter for installing / running the bridge dash compiler.",
+    "exportData": true,
     "filters": [
         {
             "runWith": "nim",
