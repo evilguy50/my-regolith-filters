@@ -7,8 +7,9 @@
     "glob": "^8.0.3"
   },
   "name": "new_exec",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "index.js",
+  "type": "module",
   "devDependencies": {
     "@types/node": "^16.11.36",
     "husky": "^8.0.1",
