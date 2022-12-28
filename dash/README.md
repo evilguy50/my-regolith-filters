@@ -5,7 +5,7 @@ filter for installing / running the bridge dash compiler.
 
 ## Before running
 1. make sure you have nim and deno installed
-2. make sure your config.json file has a compiler key and that the behaviour and resource pack keys are both set to ./BP and ./RP respectively
+2. make sure your config.json file has a compiler key
 
 ## Example compiler key
 ```json
@@ -29,3 +29,7 @@ filter for installing / running the bridge dash compiler.
     ]
   }
 ```
+
+3. if use_bridge_config in settings.json is set to false you MUST set behaviour_pack and resource_pack to ./BP and ./RP
+
+4. if use_bridge_config in settings.json is set to true you can leave your standard config.json alone and have those settings stored in data/dash/config.json instead

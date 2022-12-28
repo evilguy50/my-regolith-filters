@@ -2,13 +2,22 @@ import os, json, strformat
 import puppy
 import zippy/ziparchives
 
-
 const dashVersion = "0.4.4"
+echo fmt"dash version: {dashVersion}"
 let rootDir = getEnv("ROOT_DIR")
 let filterDir = getCurrentDir()
-let config = parseFile(fmt"{rootDir}/config.json")
+var configFile = fmt"{rootDir}/config.json"
+var settings = parseFile("./data/dash/settings.json")
+if settings["use_bridge_config"].to(bool) == true:
+    echo "set config to bridge config"
+    configFile = fmt"{filterDir}/data/dash/config.json"
+if not fileExists(configFile):
+    echo fmt"config file: ${configFile}"
+    quit("config file doesn't exist")
+var config = parseFile(configFile)
 
 if not config.hasKey("compiler"):
+    echo fmt"config file: ${configFile}"
     quit("config file missing field 'compiler' needed for dash to run")
 
 if not dirExists("./data/dash"):
@@ -26,7 +35,7 @@ if not dirExists("./data/dash/dash_compiler"):
 
 echo filterDir
 setCurrentDir(filterDir)
-copyFile(fmt"{rootDir}/config.json", "./config.json")
+copyFile(configFile, "./config.json")
 sleep(1000)
 
 discard execShellCmd("dash_compiler build")
