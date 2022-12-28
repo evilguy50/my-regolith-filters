@@ -1,6 +1,6 @@
 # Package
 
-version       = "1.1.0"
+version       = "1.2.0"
 author        = "evil#8098"
 description   = "A regolith filter for installing / running the bridge dash compiler"
 license       = "MIT"
