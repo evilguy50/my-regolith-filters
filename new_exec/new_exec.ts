@@ -25,8 +25,8 @@ function *walkSync(dir: string): any {
     }
   }
 }
-const cmdTemplate = "execute as $selector positioned $posrun $cmd"
-const detectTemplate = "execute as $selector positioned $posif block $2pos$block $data run $cmd"
+const cmdTemplate = "execute as $selector at @s positioned $posrun $cmd"
+const detectTemplate = "execute as $selector at @s positioned $posif block $2pos$block $data run $cmd"
 function detectExec(args: Array<string>, selector: string) {
         let pos = getElemInRange(args, " ", 2, 4)
         let pos2 = getElemInRange(args, " ", 6, 8)
