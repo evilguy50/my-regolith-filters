@@ -7,7 +7,7 @@
     "glob": "^8.0.3"
   },
   "name": "new_exec",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "index.js",
   "type": "module",
   "devDependencies": {
@@ -19,9 +19,8 @@
     "typescript": "^4.7.2"
   },
   "scripts": {
-    "prepare": "tsc new_exec.ts",
-    "build": "tsc new_exec.ts",
-    "start": "ts-node new_exec.ts"
+    "prepare": "tsc",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "evil#8098",
