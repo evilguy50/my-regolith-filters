@@ -2,7 +2,7 @@ import os, json, strformat
 import puppy
 import zippy/ziparchives
 
-const dashVersion = "0.4.4"
+const dashVersion = "0.4.5"
 echo fmt"dash version: {dashVersion}"
 let rootDir = getEnv("ROOT_DIR")
 let filterDir = getCurrentDir()
